@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-size: 20px;
+        }
+        input, p {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>mini kalkulator</h1>
+    <label for="input1">Wartość 1:</label>
+    <input type="number" id="input1" /><br>
+    <label for="input2">Wartość 2:</label>
+    <input type="number" id="input2" /><br>
+    <label for="input3">Wartość 3:</label>
+    <input type="number" id="input3" /><br>
+    <label for="input4">Wartość 4:</label>
+    <input type="number" id="input4" /><br>
+
+    <button id="calculate">Przelicz</button>
+    <button id="new">Dodaj pole</button>
+
+    <h1>Wyniki</h1><br>
+    <p id="sum">Suma: </p>
+    <p id="average">Srednia: </p>
+    <p id="min">Min: </p>
+    <p id="max">Max: </p>
+
+    <script>
+        function calc() {
+            const inputs = document.querySelectorAll('input[type="number"]');
+            const values = Array.from(inputs).map(input => parseFloat(input.value) || 0);
+
+        const sum = values.reduce((acc, val) => acc + val, 0);
+        const average = sum / 4;
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+
+        document.getElementById('sum').textContent  = "Suma: " + sum;
+        document.getElementById('average').textContent = "Średnia: " + average;
+        document.getElementById('min').textContent = "Min: " + min;
+        document.getElementById('max').textContent = "Max: " + max;
+        }
+
+        function addInputField() {
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.addEventListener('input', calc);
+            document.body.insertBefore(input, document.getElementById('calculate'));
+            document.body.insertBefore(document.createElement('br'), document.getElementById('calculate'));
+
+        }
+
+        function deleteInputField() {
+        }
+
+        document.getElementById('new').addEventListener('click', addInputField);
+
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', calc);
+        });
+
+        calc();
+       
+    </script>
+</body>
+</html>
