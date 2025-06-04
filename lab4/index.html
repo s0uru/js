@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>lab2</title>
+</head>
+<body>
+    <div class="container">
+        <h1></h1>
+        <div id="main">
+            <form id="note-form">
+                <input type="text" id="note-title" placeholder="Tytuł" required />
+                <textarea id="note-content" placeholder="Treść" required></textarea>
+                <input type="color" id="note-color" value="#ffffff" />
+                <label>
+                    <input type="checkbox" id="note-pinned" />
+                    Przypnij
+                </label>
+                <button type="submit">Dodaj notatkę</button>
+            </form>
+            <div id="notes-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
